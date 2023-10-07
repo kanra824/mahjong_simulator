@@ -318,8 +318,7 @@ impl ResultShape {
         house: usize,
         other: HashSet<OtherInfo>,
     ) -> Self {
-
-        let mut res = ResultShape{
+        let mut res = ResultShape {
             wait,
             last,
             head,
@@ -547,7 +546,9 @@ impl ResultShape {
         }
 
         if sansyoku_dojun {
-            self.yaku.insert(Yaku::SansyokuDoujun(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku.insert(Yaku::SansyokuDoujun(
+                self.other.contains(&OtherInfo::Menzen),
+            ));
         }
     }
 
@@ -642,7 +643,8 @@ impl ResultShape {
             || check_s.iter().fold(true, |acc, x| acc && *x)
             || check_p.iter().fold(true, |acc, x| acc && *x)
         {
-            self.yaku.insert(Yaku::IkkiTsukan(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .insert(Yaku::IkkiTsukan(self.other.contains(&OtherInfo::Menzen)));
         }
     }
 
@@ -683,7 +685,8 @@ impl ResultShape {
         }
 
         if honchan {
-            self.yaku.insert(Yaku::HonChan(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .insert(Yaku::HonChan(self.other.contains(&OtherInfo::Menzen)));
         }
     }
 
@@ -779,8 +782,10 @@ impl ResultShape {
         }
 
         if junchan {
-            self.yaku.remove(&Yaku::HonChan(self.other.contains(&OtherInfo::Menzen)));
-            self.yaku.insert(Yaku::Junchan(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .remove(&Yaku::HonChan(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .insert(Yaku::Junchan(self.other.contains(&OtherInfo::Menzen)));
         }
     }
 
@@ -807,7 +812,8 @@ impl ResultShape {
         }
 
         if check_m || check_s || check_p {
-            self.yaku.insert(Yaku::Honitsu(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .insert(Yaku::Honitsu(self.other.contains(&OtherInfo::Menzen)));
         }
     }
 
@@ -838,8 +844,10 @@ impl ResultShape {
         }
 
         if check_m || check_s || check_p {
-            self.yaku.remove(&Yaku::Honitsu(self.other.contains(&OtherInfo::Menzen)));
-            self.yaku.insert(Yaku::Chinitsu(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .remove(&Yaku::Honitsu(self.other.contains(&OtherInfo::Menzen)));
+            self.yaku
+                .insert(Yaku::Chinitsu(self.other.contains(&OtherInfo::Menzen)));
         }
     }
 
@@ -1055,7 +1063,7 @@ impl ResultShape {
         if !self.other.contains(&OtherInfo::Churenpoutou) {
             return;
         }
-        let mut cnt = vec![0;9];
+        let mut cnt = vec![0; 9];
         for (mentsu, _) in self.body.iter() {
             match mentsu[0] {
                 Tile::M(n, _) => {
@@ -1256,7 +1264,13 @@ impl ResultShape {
     fn calc_score(&self) -> Vec<i32> {
         if self.other.contains(&OtherInfo::Yakuman) {
             let yakuman = self.calc_yakuman();
-            let val = self.score_val(self.me == self.house, self.win.is_none(), 0, 0, yakuman as i32);
+            let val = self.score_val(
+                self.me == self.house,
+                self.win.is_none(),
+                0,
+                0,
+                yakuman as i32,
+            );
             return val;
         } else {
             let han = self.calc_han();
