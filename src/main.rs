@@ -10,8 +10,6 @@ use yaku_check::{han_1::*, han_2::*, han_3::*, han_6::*, yakuman::*};
 
 use std::{collections::HashMap, collections::HashSet};
 
-#[allow(dead_code)]
-
 struct ScoreTable {
     House: bool, // 親
     Tsumo: bool, // ツモかどうか
