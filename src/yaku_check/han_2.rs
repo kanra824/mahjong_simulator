@@ -1,6 +1,5 @@
+use crate::result_shape::{OtherInfo, ResultShape};
 use crate::yaku::Yaku;
-use crate::OtherInfo;
-use crate::ResultShape;
 use crate::Fuuro;
 use crate::Tile;
 
@@ -144,7 +143,12 @@ pub fn check_ikkitsukan(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yak
         || check_s.iter().fold(true, |acc, x| acc && *x)
         || check_p.iter().fold(true, |acc, x| acc && *x)
     {
-        (Some(Yaku::IkkiTsukan(result_shape.other.contains(&OtherInfo::Menzen))), None)
+        (
+            Some(Yaku::IkkiTsukan(
+                result_shape.other.contains(&OtherInfo::Menzen),
+            )),
+            None,
+        )
     } else {
         (None, None)
     }
@@ -191,7 +195,12 @@ pub fn check_honchan(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yaku>)
     }
 
     if honchan {
-        (Some(Yaku::HonChan(result_shape.other.contains(&OtherInfo::Menzen))), None)
+        (
+            Some(Yaku::HonChan(
+                result_shape.other.contains(&OtherInfo::Menzen),
+            )),
+            None,
+        )
     } else {
         (None, None)
     }
@@ -228,10 +237,8 @@ pub fn check_shosangen(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yaku
         }
     }
     match result_shape.head {
-        Tile::Y(_) if cnt_yuan == 2 => {
-            (Some(Yaku::Syousangen), None)
-        }
-        _ => (None, None)
+        Tile::Y(_) if cnt_yuan == 2 => (Some(Yaku::Syousangen), None),
+        _ => (None, None),
     }
 }
 
