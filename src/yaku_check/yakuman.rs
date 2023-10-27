@@ -1,7 +1,8 @@
-use crate::{ResultShape, OtherInfo, Wait};
+use crate::result_shape::{OtherInfo, ResultShape};
+use crate::tile::{Tile, Wind, Yuan};
 use crate::yaku::Yaku;
-use crate::tile::{Tile, Yuan, Wind};
 use crate::Fuuro;
+use crate::Wait;
 
 pub fn check_suanko(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yaku>) {
     let mut cnt_anko = 0;

@@ -1,6 +1,6 @@
+use crate::result_shape::{OtherInfo, ResultShape};
 use crate::tile::Tile;
 use crate::yaku::Yaku;
-use crate::{OtherInfo, ResultShape};
 
 // 三翻
 

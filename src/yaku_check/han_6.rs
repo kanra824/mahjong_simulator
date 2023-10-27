@@ -1,7 +1,6 @@
-use crate::{ResultShape, OtherInfo};
-use crate::yaku::Yaku;
+use crate::result_shape::{OtherInfo, ResultShape};
 use crate::tile::Tile;
-
+use crate::yaku::Yaku;
 
 pub fn check_chinitsu(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yaku>) {
     let mut check_m = true;

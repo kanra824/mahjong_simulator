@@ -1,5 +1,5 @@
+use crate::result_shape::ResultShape;
 use crate::tile::{Tile, Yuan};
-use crate::ResultShape;
 
 #[derive(Debug)]
 #[allow(dead_code)]

@@ -1,7 +1,7 @@
+use crate::result_shape::{OtherInfo, ResultShape};
 use crate::tile::{Tile, Wind, Yuan};
 use crate::yaku::Yaku;
 use crate::Wait;
-use crate::{OtherInfo, ResultShape};
 
 // ドラ
 pub fn check_dora(result_shape: &ResultShape) -> (Option<Yaku>, Option<Yaku>) {
