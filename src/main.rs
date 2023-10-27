@@ -11,17 +11,6 @@ use yaku_check::{han_1::*, han_2::*, han_3::*, han_6::*, yakuman::*};
 
 use std::{collections::HashMap, collections::HashSet};
 
-struct ScoreTable {
-    House: bool, // 親
-    Tsumo: bool, // ツモかどうか
-    Fu: u8,
-    Han: u8,
-}
-
-impl ScoreTable {
-    fn calc_score() {}
-}
-
 #[derive(PartialEq, Eq)]
 pub enum Wait {
     Head,  // 単騎
@@ -38,8 +27,6 @@ pub enum Fuuro {
     Kakan,
     None, // 鳴いていない,
 }
-
-
 
 fn main() {
     let mut hand = Hand::new();
