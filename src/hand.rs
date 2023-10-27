@@ -45,9 +45,9 @@ impl Hand {
         house: usize,
         win: Option<usize>,
     ) -> Vec<ResultShape> {
-        // calc_wait()
-        //
-
+        // アガリ判定をするのは場の状態を持つ struct では？
+        // そのほうがリーチや天和、地和の判定がしやすい
+        // 場は各プレイヤーの Hand をもっているはずだから、ここで見れる情報は場のクラスも見れる。
         unimplemented!();
     }
 

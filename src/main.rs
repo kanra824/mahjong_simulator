@@ -40,35 +40,37 @@ enum Fuuro {
 
 #[derive(PartialEq, Eq, Hash)]
 enum OtherInfo {
-    Yakuman,
-    Chitoitsu,
-    Kokushimusou,
-    Churenpoutou,
-    Rinshan,
-    Ippatsu,
-    Menzen,
-    Haitei,
-    Houtei,
-    Chankan,
-    Reach,
-    DoubleReach,
-    Chihou,
-    Tenhou,
+    Yakuman, // 役満で上がった
+    Chitoitsu, // 七対子
+    Kokushimusou, // 国士無双
+    Churenpoutou, // 九蓮宝燈
+    Rinshan, // 嶺上開花
+    Ippatsu, // 一発
+    Menzen, // 門前
+    Haitei, // 海底摸月
+    Houtei, // 河底撈魚
+    Chankan, // 槍槓
+    Reach, // リーチ
+    DoubleReach, // ダブリー
+    Chihou, // 地和
+    Tenhou, // 天和
 }
 
+// アガリ形
+// 点数計算に必要な情報を格納する
 pub struct ResultShape {
-    wait: Wait,
-    last: Tile,
-    head: Tile,
-    body: Vec<(Vec<Tile>, Fuuro)>, // TODO: 登録時にバリデーションする. 順子の場合ソートも行う
+    wait: Wait, // アガリ時の待ち
+    last: Tile, // 最後にツモった牌
+    head: Tile, // アタマ
+    body: Vec<(Vec<Tile>, Fuuro)>, // 3 * 4 のメンツ TODO: 登録時にバリデーションする. 順子の場合ソートも行う
     yaku: HashSet<Yaku>,           // calc_han() で役が登録される
-    win: Option<usize>,
-    dora_cnt: usize,
-    field_wind: Wind,
-    wind: Wind,
-    me: usize,
-    house: usize,
-    other: HashSet<OtherInfo>,
+    win: Option<usize>, // ロンした相手. ツモの場合は None
+    dora_cnt: usize, // ドラの数
+    field_wind: Wind, // 場風
+    wind: Wind, // 自風
+    me: usize, // 自分のプレイヤーID
+    house: usize, // 親のプレイヤーID
+    other: HashSet<OtherInfo>, // その他の情報
 }
 
 impl ResultShape {
@@ -117,6 +119,7 @@ impl ResultShape {
     }
 
     fn validate(&self) {
+        // body がメンツになっているかどうかチェック
         unimplemented!();
     }
 
